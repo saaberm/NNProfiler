@@ -6,6 +6,7 @@
 * Relu <br/>
 * MaxPooling & AVGPooling 2d & 3d <br/>
 * Softmax <br/>
+* Sigmoid <br/>
 
 ## **Testing:** <br/>
 to test it with your net, first import the profiler: "from profileCNN import NN_Profiler" <br/>
