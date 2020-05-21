@@ -21,13 +21,13 @@ import pickle
 
 
 #check for alexnet
-model = torch.hub.load('pytorch/vision:v0.6.0', 'alexnet', pretrained=True)
-inp_size = (1, 3, 224,224)
+#model = torch.hub.load('pytorch/vision:v0.6.0', 'alexnet', pretrained=True)
+#inp_size = (1, 3, 224,224)
 
 #uncomment for testing 3D CNN 
 #this model is imported from https://github.com/HHTseng/video-classification
 
-"""
+
 # 3D CNN parameters
 fc_hidden1, fc_hidden2 = 256, 256
 dropout = 0.0        # dropout probability
@@ -55,9 +55,11 @@ params = {'batch_size': batch_size, 'shuffle': True, 'num_workers': 4, 'pin_memo
 model = CNN3D(t_dim=len(selected_frames), img_x=img_x, img_y=img_y,
               drop_p=dropout, fc_hidden1=fc_hidden1,  fc_hidden2=fc_hidden2, num_classes=k).to(device)
 inp_size=(1, 1, 28, 256, 342)
-"""
+
 
 #profiling example net
-ops, paramz = NN_Profiler(model, inp_size)
+ops, paramz, neurons, synapses = NN_Profiler(model, inp_size)
 print ("Total OPS", int(ops)/1e9, "GOPs")# {:.2e}".format(int(ops)))
 print ("Total params", int(paramz)/1e6, "Meg")# {:.2e}".format(int(params)))
+print ("Total neurons", int(neurons)/1e6, "Meg")# {:.2e}".format(int(params)))
+print ("Total synapses", int(synapses)/1e6, "Meg")# {:.2e}".format(int(params)))
