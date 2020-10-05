@@ -1,6 +1,6 @@
 #import profiler and model 
 from profileCNN import NN_Profiler
-from functions import *
+#from functions import *
 
 import os
 import numpy as np
@@ -12,8 +12,8 @@ import torchvision.transforms as transforms
 import torch.utils.data as data
 import torchvision
 from torch.autograd import Variable
-import matplotlib.pyplot as plt
-from functions import *
+#import matplotlib.pyplot as plt
+#from functions import *
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 from sklearn.metrics import accuracy_score
@@ -21,13 +21,13 @@ import pickle
 
 
 #check for alexnet
-#model = torch.hub.load('pytorch/vision:v0.6.0', 'alexnet', pretrained=True)
-#inp_size = (1, 3, 224,224)
+model = torch.hub.load('pytorch/vision:v0.6.0', 'alexnet', pretrained=True)
+inp_size = (1, 3, 224,224)
 
 #uncomment for testing 3D CNN 
 #this model is imported from https://github.com/HHTseng/video-classification
 
-
+"""
 # 3D CNN parameters
 fc_hidden1, fc_hidden2 = 256, 256
 dropout = 0.0        # dropout probability
@@ -55,7 +55,7 @@ params = {'batch_size': batch_size, 'shuffle': True, 'num_workers': 4, 'pin_memo
 model = CNN3D(t_dim=len(selected_frames), img_x=img_x, img_y=img_y,
               drop_p=dropout, fc_hidden1=fc_hidden1,  fc_hidden2=fc_hidden2, num_classes=k).to(device)
 inp_size=(1, 1, 28, 256, 342)
-
+"""
 
 #profiling example net
 ops, paramz, neurons, synapses = NN_Profiler(model, inp_size)
